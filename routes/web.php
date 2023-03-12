@@ -30,12 +30,12 @@ Route::get('logout', [LoginController::class, 'logout'])->name('logout')->middle
 Route::controller(DashboardController::class)->group(function(){
     Route::get('dashboard','index')->name('dashboard');
     Route::get('users','users')->name('users');
-    Route::get('users/edit','edit_user')->name('edit_user');
+    Route::get('users/edit/{id}','edit_user')->name('edit_user');
     Route::get('users/view','view_user')->name('view_user');
 
    
 
-});
+})->middleware("web");
 
 /**
  * User Controller for login registration and forgot password or reset password

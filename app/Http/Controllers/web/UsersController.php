@@ -10,7 +10,9 @@ use Illuminate\Support\Facades\Auth;
 class UsersController extends Controller
 {
 
-
+    function __construct(){
+        $this->middleware('guest')->except('logout');
+    }
     function login()
     {
         return view('auth.login');

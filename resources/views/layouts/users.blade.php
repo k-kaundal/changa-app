@@ -18,7 +18,7 @@
             <!--Start Custromer Content-->
                 <section id="customer-list">
                     <h5>Customer Listing</h5>
-                    @foreach ($users as $user)
+                  
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="card">
@@ -38,6 +38,7 @@
                                       </tr>
                                     </thead>
                                     <tbody>
+                                      @foreach ($users as $user)
                                       <tr>
                                         <th scope="row">1</th>
                                         <td>{{$user->customer_id}}</td>
@@ -48,10 +49,11 @@
                                         <td>{{$user->username}}</td>
                                         <td>
                                             <a href="{{route('view_user')}}" class="btn btn-success">View</a>
-                                            <a href="{{route('edit_user')}}" class="btn btn-warning">Edit</a>
+                                            <a href="{{route('edit_user',$user->id)}}" class="btn btn-warning">Edit</a>
                                             <a href="" class="btn btn-danger" type="button" data-toggle="modal" data-target="#exampleModalCenter">Delete</a>
                                         </td>
                                       </tr>
+                                      @endforeach
                                     </tbody>
                                   </table>
                                 </div>
@@ -59,7 +61,7 @@
                             </div>
                           </div>
                     </div>
-                    @endforeach
+                   
                 </section>
             <!--End Custromer Content-->
               

@@ -11,7 +11,7 @@ class DashboardController extends Controller
 
 
     function __construct(){
-        $this->middleware('guest')->except('logout');
+        $this->middleware('auth')->except('logout');
     }
     
     function index(){
@@ -27,8 +27,15 @@ class DashboardController extends Controller
        
     }
 
-    function edit_user(){
-        return view('layouts.users.edit');
+    function edit_user($id){
+        try{
+            $user = User::where('id',$id)->first();
+            return view('layouts.users.edit')->with('user',$user);
+        } catch(\Throwable $e){
+            return view('layouts.users.edit')->with('error',$e);
+        }
+
+       
     }
 
     function view_user(){

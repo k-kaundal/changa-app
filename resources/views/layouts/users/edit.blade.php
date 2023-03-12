@@ -25,27 +25,27 @@
                         <div class="row">
                             <div class="col-md-12 col-sm-6 form-group">
                                 <label for="input-1">Customer ID</label>
-                                <input type="text" class="form-control" id="input-1" value="CA#123">
+                                <input type="text" class="form-control" id="input-1" value="{{$user->customer_id??""}}">
                             </div>
                             <div class="col-md-12 col-sm-6 form-group">
-                                <label for="input-1">Created Date</label>
-                                <input type="text" class="form-control" id="input-1" value="01-02-2023">
+                                <label for="input-1">Created At</label>
+                                <input type="text" class="form-control" id="input-1" value="{{$user->created_at??""}}" disabled>
                             </div>
                             <div class="col-md-6 col-sm-12 form-group">
-                                <label for="input-1">Customer Name</label>
-                                <input type="text" class="form-control" id="input-1" value="John Doe">
+                                <label for="input-1">Name</label>
+                                <input type="text" class="form-control" id="input-1" value="{{$user->first_name??""}}">
                             </div>
                             <div class="col-md-6 col-sm-12 form-group">
-                                <label for="input-2">Email Address</label>
-                                <input type="text" class="form-control" id="input-2" value="john123@gmail.com">
+                                <label for="input-2">Email</label>
+                                <input type="text" class="form-control" id="input-2" value="{{$user->email??""}}">
                             </div>
                             <div class="col-md-6 col-sm-12 form-group">
-                                <label for="input-3">Phone Number</label>
-                                <input type="text" class="form-control" id="input-3" value="+1 457895456">
+                                <label for="input-3">Phone</label>
+                                <input type="text" class="form-control" id="input-3" value="{{$user->mobile_no??""}}">
                             </div>
                             <div class="col-md-6 col-sm-12 form-group">
-                                <label for="input-4">User Name</label>
-                                <input type="text" class="form-control" id="input-4" value="john_d12">
+                                <label for="input-4">Username</label>
+                                <input type="text" class="form-control" id="input-4" value="{{$user->username??""}}">
                             </div>
                             <div class="col-md-12 form-group">
                                 <a href="customers.html"><button type="button" class="btn btn-success px-5">Update</button></a> 
