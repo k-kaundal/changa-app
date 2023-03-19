@@ -460,17 +460,17 @@ try{
     {
         $validator = Validator::make($request->all(), [
             'email' => 'required|email',
+            'user_type'=>'required',
+            'isGoogle'=>'required'
         ]);
         if($validator->fails()){
             return $this->sendError($validator->errors()->all());
         }
         if (!filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
-            return response()->error([
-                'message' => __('invalid Email'),
-            ]);
+            return $this->sendError('invalid Email');
         }
 
-        $username = $request->isGoogle === 0 ?  'fb_'.Str::slug($request->displayName) : 'gl_'.Str::slug($request->first_name);
+        $username = $request->isGoogle === 0 ?  'fb_'.Str::slug($request->displayName) : 'gl_'.Str::slug($request->displayName);
         $user = User::select('id', 'email', 'username','user_type')
             ->where('user_type' , $request->user_type)
             ->where('email', $request->email)
@@ -479,7 +479,7 @@ try{
 
         if (is_null($user)) {
             $user = User::create([
-                'first_name' => $request->first_name,
+                'first_name' => $request->displayName,
                 'email' => $request->email,
                 'username' => $username,
                 'password' => Hash::make(\Str::random(8)),

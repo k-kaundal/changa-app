@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('username')->unique();
             $table->string('customer_id')->nullable()->nullable();
             $table->string('email')->unique();
-            $table->string('phone')->unique();
+            $table->string('phone')->unique()->nullable();
             $table->string('profile_pic')->nullable();
             $table->string('background_pic')->nullable();
             $table->string('website')->nullable();
